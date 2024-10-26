@@ -9,7 +9,7 @@ import (
 
 func decodeSimpleString(input []byte) (string, string) {
 	if !isValid(input) {
-		log.Println("invalid lf and cr bytes")
+		log.Println("simple string : invalid lf and cr bytes")
 		return "", ""
 	}
 

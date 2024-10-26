@@ -28,6 +28,7 @@ func isValid(input []byte) bool {
 	if len(input) < 3 {
 		return false
 	}
+	println(string(input))
 	lfIndex := len(input) - 1
 	crIndex := lfIndex - 1
 	if input[lfIndex] != constants.LF || input[crIndex] != constants.CR {
