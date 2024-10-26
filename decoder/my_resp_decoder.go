@@ -21,7 +21,7 @@ func (decoder *MyRespDecoder) Decode(input []byte) (interface{}, string) {
 	case constants.BooleanPrefix:
 		return decodeBoolean(input)
 	default:
-		panic("Invalid input")
+		panic("Invalid input : " + string(input))
 	}
 }
 
