@@ -7,7 +7,7 @@ import (
 type MyRespDecoder struct {
 }
 
-func (decoder *MyRespDecoder) decode(input []byte) (interface{}, string) {
+func (decoder *MyRespDecoder) Decode(input []byte) (interface{}, string) {
 	switch input[0] {
 	case constants.SimpleStringPrefix:
 		return decodeSimpleString(input)
