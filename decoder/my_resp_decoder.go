@@ -30,6 +30,7 @@ func isValid(input []byte) bool {
 		return false
 	}
 	log.Printf("%#v", input)
+	//idk
 	lfIndex := len(input) - 1
 	crIndex := lfIndex - 1
 	if input[lfIndex] != constants.LF || input[crIndex] != constants.CR {
