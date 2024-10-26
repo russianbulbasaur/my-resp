@@ -2,6 +2,7 @@ package decoder
 
 import (
 	"github.com/russianbulbasaur/my-resp/constants"
+	"log"
 )
 
 type MyRespDecoder struct {
@@ -28,7 +29,7 @@ func isValid(input []byte) bool {
 	if len(input) < 3 {
 		return false
 	}
-	println(string(input))
+	log.Printf("%#v", input)
 	lfIndex := len(input) - 1
 	crIndex := lfIndex - 1
 	if input[lfIndex] != constants.LF || input[crIndex] != constants.CR {
