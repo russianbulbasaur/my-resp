@@ -1,8 +1,8 @@
 package my_resp
 
 import (
-	"my_resp/decoder"
-	"my_resp/encoder"
+	"github.com/russianbulbasaur/my-resp/decoder"
+	"github.com/russianbulbasaur/my-resp/encoder"
 )
 
 type MyRespObject struct {

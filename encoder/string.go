@@ -1,7 +1,7 @@
 package encoder
 
 import (
-	"my_resp/constants"
+	"github.com/russianbulbasaur/my-resp/constants"
 	"strconv"
 )
 

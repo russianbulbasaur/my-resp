@@ -3,7 +3,7 @@ package encoder
 import (
 	"bytes"
 	"fmt"
-	"my_resp/constants"
+	"github.com/russianbulbasaur/my-resp/constants"
 )
 
 func (encoder *MyRespEncoder) EncodeBooleanArray(array []bool) []byte {

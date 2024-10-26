@@ -1,6 +1,6 @@
 package encoder
 
-import "my_resp/constants"
+import "github.com/russianbulbasaur/my-resp/constants"
 
 func (encoder *MyRespEncoder) EncodeSimpleError(error string) []byte {
 	error += "\r\n"

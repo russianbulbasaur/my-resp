@@ -1,6 +1,6 @@
 package encoder
 
-import "my_resp/constants"
+import "github.com/russianbulbasaur/my-resp/constants"
 
 func (encoder *MyRespEncoder) EncodeBoolean(input bool) []byte {
 	response := constants.BooleanPrefix
