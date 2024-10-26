@@ -1,14 +1,18 @@
 package encoder
 
-import "github.com/russianbulbasaur/my-resp/constants"
+import (
+	"bytes"
+	"github.com/russianbulbasaur/my-resp/constants"
+)
 
 func (encoder *MyRespEncoder) EncodeBoolean(input bool) []byte {
-	response := constants.BooleanPrefix
+	response := bytes.NewBuffer(make([]byte, 0))
+	response.WriteByte(constants.BooleanPrefix)
 	if input {
-		response += "t"
+		response.WriteByte(constants.True)
 	} else {
-		response += "f"
+		response.WriteByte(constants.False)
 	}
-	response += "\r\n"
-	return []byte(response)
+	response.Write([]byte{constants.CR, constants.LF})
+	return response.Bytes()
 }

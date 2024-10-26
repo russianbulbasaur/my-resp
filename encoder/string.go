@@ -1,29 +1,31 @@
 package encoder
 
 import (
+	"bytes"
 	"github.com/russianbulbasaur/my-resp/constants"
 	"strconv"
 )
 
 func (encoder *MyRespEncoder) EncodeBulkString(input string) []byte {
-	input += "\r\n"
-	response := constants.BulkStringPrefix
+	response := bytes.NewBuffer(make([]byte, 0))
+	response.WriteByte(constants.BulkStringPrefix)
 	stringLen := len(input)
 	if stringLen == 0 {
 		//null string
-		response += "-1"
-		response += input
-		return []byte(response)
+		response.Write([]byte{'-', '1'})
+		response.Write([]byte{constants.CR, constants.LF})
+		return response.Bytes()
 	}
-	response += strconv.Itoa(stringLen)
-	response += "\r\n"
-	response += input
-	return []byte(response)
+	response.WriteString(strconv.Itoa(stringLen))
+	response.WriteString(input)
+	response.Write([]byte{constants.CR, constants.LF})
+	return response.Bytes()
 }
 
 func (encoder *MyRespEncoder) EncodeSimpleString(input string) []byte {
-	input += "\r\n"
-	response := constants.SimpleStringPrefix
-	response += input
-	return []byte(response)
+	response := bytes.NewBuffer(make([]byte, 0))
+	response.WriteByte(constants.SimpleStringPrefix)
+	response.WriteString(input)
+	response.Write([]byte{constants.CR, constants.LF})
+	return response.Bytes()
 }

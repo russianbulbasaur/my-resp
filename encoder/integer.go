@@ -1,21 +1,22 @@
 package encoder
 
 import (
+	"bytes"
 	"github.com/russianbulbasaur/my-resp/constants"
 	"strconv"
 	"strings"
 )
 
 func (encoder *MyRespEncoder) EncodeInteger(input int) []byte {
-	response := constants.IntegerPrefix
-	inputString := ""
+	response := bytes.NewBuffer(make([]byte, 0))
+	response.WriteByte(constants.IntegerPrefix)
+	inputString := strings.Trim(strconv.Itoa(input), "-+")
 	if input < 0 {
-		inputString = strings.Trim(strconv.Itoa(input), "-")
-		response += "-"
+		response.WriteByte('-')
 	} else {
-		inputString = strings.Trim(strconv.Itoa(input), "+")
-		response += "+"
+		response.WriteByte('+')
 	}
-	response += inputString
-	return []byte(response)
+	response.WriteString(inputString)
+	response.Write([]byte{constants.CR, constants.LF})
+	return response.Bytes()
 }
